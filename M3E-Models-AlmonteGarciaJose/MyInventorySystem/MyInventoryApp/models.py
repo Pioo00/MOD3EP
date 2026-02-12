@@ -14,3 +14,17 @@ class Supplier(models.Model):
     
     def __str__(self):
         return "{} - {}, {} created at: {}".format(self.name, self.city, self.country, self.created_at)
+    
+class WaterBottle(models.Model):
+
+    sku = models.CharField(max_length=200)
+    brand = models.CharField(max_length=200)
+    cost = models.CharField(max_length=200)
+    size = models.CharField(max_length=200)
+    mouthSize = models.CharField(max_length=200)
+    color = models.CharField(max_length=200)
+    suppliedBy = models.CharField(max_length=200)
+    qty = models.CharField(max_length=200)
+
+    def __str__(self): 
+        return "{}: {}, {}, {}, {}, supplied by {}, {} : {}".format(self.sku,self.brand, self.mouthSize, self.size, self.color, self.suppliedBy, self.cost, self.qty)
