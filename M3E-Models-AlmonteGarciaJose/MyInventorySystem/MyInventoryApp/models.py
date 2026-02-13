@@ -17,14 +17,15 @@ class Supplier(models.Model):
     
 class WaterBottle(models.Model):
 
-    sku = models.CharField(max_length=200)
+    sku = models.CharField(max_length=200, unique = True)
     brand = models.CharField(max_length=200)
-    cost = models.CharField(max_length=200)
+    cost = models.DecimalField(max_digits=10, decimal_places = 2)
     size = models.CharField(max_length=200)
     mouthSize = models.CharField(max_length=200)
     color = models.CharField(max_length=200)
-    suppliedBy = models.CharField(max_length=200)
-    qty = models.CharField(max_length=200)
+    suppliedBy = models.ForeignKey(Supplier, on_delete=models.CASCADE)
+    qty = models.IntegerField(default = 0)
+    #https://www.geeksforgeeks.org/python/django-model-data-types-and-fields-list/
 
     def __str__(self): 
         return "{}: {}, {}, {}, {}, supplied by {}, {} : {}".format(self.sku,self.brand, self.mouthSize, self.size, self.color, self.suppliedBy, self.cost, self.qty)
