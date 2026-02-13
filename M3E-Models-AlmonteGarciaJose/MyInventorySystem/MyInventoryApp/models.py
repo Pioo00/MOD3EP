@@ -8,6 +8,7 @@ class Supplier(models.Model):
     city = models.CharField(max_length=200)
     country = models.CharField(max_length=200)
     created_at = models.DateTimeField(default=timezone.now)
+    supplier = models.ForeignKey(Supplier, on_delete-models.CASCADE)
 
     def getName(self):
         return self.name
