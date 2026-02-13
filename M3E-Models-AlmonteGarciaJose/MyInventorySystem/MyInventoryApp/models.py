@@ -8,7 +8,6 @@ class Supplier(models.Model):
     city = models.CharField(max_length=200)
     country = models.CharField(max_length=200)
     created_at = models.DateTimeField(default=timezone.now)
-    supplier = models.ForeignKey(Supplier, on_delete-models.CASCADE)
 
     def getName(self):
         return self.name
@@ -26,7 +25,7 @@ class WaterBottle(models.Model):
     color = models.CharField(max_length=200)
     suppliedBy = models.ForeignKey(Supplier, on_delete=models.CASCADE)
     qty = models.IntegerField(default = 0)
-    #https://www.geeksforgeeks.org/python/django-model-data-types-and-fields-list/
+    # https://www.geeksforgeeks.org/python/django-model-data-types-and-fields-list/
 
     def __str__(self): 
         return "{}: {}, {}, {}, {}, supplied by {}, {} : {}".format(self.sku,self.brand, self.mouthSize, self.size, self.color, self.suppliedBy, self.cost, self.qty)
